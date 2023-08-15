@@ -28,18 +28,25 @@ async function onAddedReaction(reaction) {
 		return;
 	}
 	if(emoji == "⚠️") {
-		await warnMessage(reaction.message)
+		await warnMessage(reaction.message);
 	}
 }
 async function warnMessage(message) {
 	try {
-		let date = message.createdAt;
-		let date2 = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
-		let header = "--- " + message.author.username + " at " + date2 + " ---";
-		let message2 = header + "\n" + message.content;
+		let msgid = message.id;
+		let author = message.author;
+		let userid = author.id;
+		let score = await db.getScore(msgid);
+		await db.addToScore(msgid, author, 1);
+		//let date = message.createdAt;
+		//let date2 = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear();
+		//let header = "Warn: " + message.author.username + " at " + date2;
+		//let message2 = header + "\n" + message.content + " - @moderator";
+		//let channel = message.channel;
+		//channel.send(message2);
 	}
 	catch(ex) {
-		message.channel.send("Unable to send warning: " + ex);
+		channel.send("Unable to send warning: " + ex);
 	}
 }
 
