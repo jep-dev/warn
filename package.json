@@ -1,0 +1,22 @@
+{
+	"name": warn,
+	"version": "0.0.1",
+	"description": "Alerts moderators to :warning: reaction"
+	"main": "warn.js",
+	scripts: {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"discord",
+		"emoji"
+	],
+	"author": "John Petersen",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:jep-dev/warn.git"
+	},
+	"dependencies": {
+		"discord.js": "^11.6.4"
+	}
+}
