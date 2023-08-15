@@ -28,7 +28,11 @@ async function onAddedReaction(reaction) {
 		return;
 	}
 	if(emoji == "⚠️") {
-		await warnMessage(reaction.message);
+		try {
+			await warnMessage(reaction.message);
+		} catch(ex) {
+			console.send("Unable to warn: " + ex);
+		}
 	}
 }
 async function warnMessage(message) {
