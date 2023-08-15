@@ -1,0 +1,10 @@
+version: '0.0.1'
+services:
+  warn:
+    container_name: warn
+    build: .
+    command: node warn.js
+    volumes:
+      - database:/home/app/warn/database
+volumes:
+  database: { }

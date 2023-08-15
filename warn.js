@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-//const sql = require('sqlite');
-//const Database = require('./database');
-//const config = require('./config.json');
-//const db = new Database(sql);
+const sql = require('sqlite');
+const Database = require('./database');
+const config = require('./config.json');
+const db = new Database(sql);
 const client = new Discord.Client();
 
 client.on("messageReactionAdd", async (reaction, user) => {
@@ -50,7 +50,7 @@ function sleep(ms) {
 client.on('error', console.error);
 
 async function start() {
-	//await db.load();
+	await db.load();
 	console.log("Starting login");
 	await client.login(config.token);
 	console.log("Logged into Discord");
