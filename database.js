@@ -2,8 +2,8 @@ module.exports = Database = function (sql) {
 	this.sql = sql;
 }
 Database.prototype = {
-	load: async function () {
-		await this.sql.open("database/scores.sqlite");
+	load: async function (fname) {
+		await this.sql.open(fname);
 		await this.sql.migrate();
 		console.log("Loaded database");
 		// TEST SETUP
