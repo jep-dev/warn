@@ -1,9 +1,22 @@
-const Discord = require('discord.js');
-const sql = require('sqlite');
-const Database = require('./database');
+//const Discord = require('discord.js');
+//const sql = require('sqlite');
+//const Database = require('./database.js');
+//const config = require('./config.json');
+//const db = new Database(sql);
+//const client = new Discord.Client();
+
+const { Client, GatewayIntentBits } = require("discord.js");
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent],
+});
+client.on('ready', () => {
+	console.log(`Logged in as ${client.user.tag}!`);
+});
 const config = require('./config.json');
+const sql = require('sqlite');
+const Database = require('./database.js');
 const db = new Database(sql);
-const client = new Discord.Client();
+
 
 client.on("messageReactionAdd", async (reaction, user) => {
 	try {
@@ -61,7 +74,7 @@ function sleep(ms) {
 client.on('error', console.error);
 
 async function start() {
-	await db.load();
+	await db.load('database.js');
 	console.log("Starting login");
 	await client.login(config.token);
 	console.log("Logged into Discord");
