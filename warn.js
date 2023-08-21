@@ -74,7 +74,7 @@ function sleep(ms) {
 client.on('error', console.error);
 
 async function start() {
-	await db.load("database/scores.sqlite");
+	await db.load();
 	console.log("Starting login");
 	await client.login(config.token);
 	console.log("Logged into Discord");
